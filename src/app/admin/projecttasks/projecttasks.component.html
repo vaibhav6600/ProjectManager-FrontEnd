@@ -1,0 +1,116 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Project Tasks</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">{{project.name}}</li>
+          <li class="breadcrumb-item">{{module.name}}</li>
+          <li class="breadcrumb-item active">Project Tasks</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row  m-2 shadow p-3 mb-5 bg-body rounded pb-5">
+        <form class="row g-3" [formGroup]="formdata" (ngSubmit)="Save(formdata.value)">
+            
+          <div class="col-md-6 pagetitle">
+            <h1>Project: {{ project.name }}</h1>
+          </div>
+          <div class="col-md-6 text-end pagetitle">
+            <h1>Module: {{ module.name }}</h1>
+          </div>
+            
+            <div class="col-md-5">
+              <label for="inputPassword4" class="form-label">Task :</label>
+              <input type="text" class="form-control" id="inputPassword4" formControlName="task">
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-12"></div>
+
+              <div class="col-md-11">
+                <label for="inputEmail4" class="form-label">Description :</label>
+                <textarea type="text" rows="5" class="form-control" id="inputEmail4" formControlName="description"></textarea>
+              </div>
+            
+            <div class="col-md-12"></div> 
+            
+            <div class="col-md-5">
+              <label for="inputAddress2" class="form-label">Start Date :</label>
+              <input type="date" class="form-control" id="inputAddress2" formControlName="startdate">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <label for="inputCity" class="form-label">End Date :</label>
+              <input type="date" class="form-control" id="inputCity" formControlName="enddate">
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-3">
+                <label for="inputAddress2" class="form-label">Start Time :</label>
+                <input type="time" class="form-control" id="inputAddress2" formControlName="starttime">
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <label for="inputCity" class="form-label">End Time :</label>
+                <input type="time" class="form-control" id="inputCity" formControlName="endtime">
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <label for="inputCity" class="form-label">Duration :</label>
+                <input type="text" class="form-control" id="inputCity" formControlName="duration">
+              </div>
+
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                <label for="inputCity" class="form-label">Status :</label>
+                <select type="text" class="form-select" id="inputCity" formControlName="status" >
+                    <option value="Pending">Pending</option>
+                    <option value="Working">Working</option>
+                    <option value="Completed">Completed</option>
+                </select>
+              </div>
+              <div class="col-md-12"></div> 
+              <div class="col-md-5"></div> 
+            
+            <div class="col-md-6 text-end mt-5">
+              <button type="submit" class="btn btn-primary w-50">Submit</button>
+            </div>
+          </form>
+      </div>
+
+      <table class="table table-secondary shadow p-3 mb-5 bg-body rounded pb-5 text-center">
+        <thead>
+        <tr >
+            <th>Sr.no</th>
+            <th>Task</th>
+            <th>Start Date-Time</th>
+            <th>End Date-Time</th>
+            <th>Duration/Days</th>
+            <th>Status</th>
+            <th id="Action">Action</th>
+            
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let task of tasks, let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ task.task }}</td>
+            <td>{{ task.startdate | date }} <br> {{ task.starttime }}</td>
+            <td>{{ task.enddate | date }} <br> {{ task.endtime }}</td>
+            <td>{{ task.duration }}</td>
+            <td>{{ task.status }}</td>
+            <td>
+              <button class="btn btn-outline-primary me-2" (click)="Edit(task.id)" >Edit</button>
+              <button class="btn btn-outline-danger" (click)="Delete(task.id)" >Delete</button>
+            </td>
+        </tr>
+      </tbody>
+
+      </table>
+      </section>
+      </main>

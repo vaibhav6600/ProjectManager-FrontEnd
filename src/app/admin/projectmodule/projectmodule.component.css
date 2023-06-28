@@ -1,0 +1,11 @@
+input,select,textarea{
+    box-shadow: 0 0 2px black;
+}
+th{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.projectname{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}

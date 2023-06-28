@@ -1,0 +1,95 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Projects</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <!-- <li class="breadcrumb-item">Components</li> -->
+          <li class="breadcrumb-item active">Projects</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title --> 
+
+    <section class="section">
+      <div class="row  m-2 shadow p-3 mb-5 bg-body rounded pb-5">
+        <form class="row g-3" [formGroup]="formdata" (ngSubmit)="Save(formdata.value)">
+            
+            
+            <div class="col-md-5">
+              <label for="inputPassword4" class="form-label">Project Name :</label>
+              <input type="text" class="form-control" id="inputPassword4" formControlName="name">
+            </div>
+            <div class="col-md-1"></div>
+
+            
+
+            <div class="col-md-5">
+                <label for="inputState" class="form-label">Manager :</label>
+                <select id="inputState" class="form-select" formControlName="managerid" >
+                  <option value="">Choose...</option>
+                  <option *ngFor="let employee of employees" value="{{employee.id}}">{{employee.name}}</option>
+                  
+                </select>
+              </div>
+            <div class="col-md-12"></div> 
+            
+            <div class="col-md-5">
+              <label for="inputAddress2" class="form-label">Start Date :</label>
+              <input type="date" class="form-control" id="inputAddress2" formControlName="startdate">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <label for="inputCity" class="form-label">Target Date :</label>
+              <input type="date" class="form-control" id="inputCity" formControlName="targetdate">
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-12"></div>
+
+              <div class="col-md-11">
+                <label for="inputEmail4" class="form-label">Description :</label>
+                <textarea type="text" rows="5" class="form-control" id="inputEmail4" formControlName="description"></textarea>
+              </div>
+            
+            <div class="col-md-6 text-end mt-5">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+      </div>
+
+      <hr>
+
+      <table class="table table-secondary shadow p-3 mb-5 bg-body rounded pb-5 text-center">
+        <thead>
+        <tr >
+            <th>Sr.no</th>
+            <th>Project Name</th>
+            <th>Manager</th>
+            <th>Start Date</th>
+            <th>Target Date</th>
+            <th id="Action">Action</th>
+            <th id="Module">Modules</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let project of projects, let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ project.name }}</td>
+            <td>{{ project.manager.name }}</td>
+            <td>{{ project.startdate | date }}</td>
+            <td>{{ project.targetdate | date }}</td>
+            <td>
+              <button class="btn btn-outline-primary me-2" (click)="Edit(project.id)" >Edit</button>
+              <button class="btn btn-outline-danger" (click)="Delete(project.id)" >Delete</button>
+            </td>
+            <td>
+              <button class="btn btn-outline-success" routerLink="projectmodule/{{project.id}}/{{project.managerid}}">Add Modules</button>
+            </td>
+        </tr>
+      </tbody>
+
+      </table>
+    </section>
+</main>

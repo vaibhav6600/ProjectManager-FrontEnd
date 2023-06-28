@@ -1,0 +1,57 @@
+<main *ngIf="project" id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Project Modules </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"> {{ project.name }}</li>
+                <li class="breadcrumb-item active">Modules</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row  m-2 shadow p-3 mb-5 bg-body rounded pb-5">
+            <form class="row g-3" [formGroup]="formdata" (ngSubmit)="Save(formdata.value)">
+                <div class="col-md-12 pagetitle"><h1>Project Name: {{project.name}}</h1></div>
+
+                <div class="col-md-5">
+                    <label for="inputPassword4" class="form-label">Module Name :</label>
+                    <input type="text" class="form-control" id="inputPassword4" formControlName="name">
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6 text-end mt-5">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <hr>
+
+        <table class="table table-secondary shadow p-3 mb-5 bg-body rounded pb-5 text-center">
+            <thead>
+            <tr >
+                <th>Sr.no</th>
+                <th>Module Name</th>
+                <th>Action</th>
+                <th>Tasks</th>
+            </tr>
+          </thead>
+    
+          <tbody>
+            <tr *ngFor="let module of modules, let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ module.name }}</td>
+                <td>
+                  <button class="btn btn-outline-primary me-2" (click)="Edit(module.id)" >Edit</button>
+                  <button class="btn btn-outline-danger" (click)="Delete(module.id)" >Delete</button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-success" routerLink="projecttasks/{{module.id}}">Add Task</button>
+                </td>
+            </tr>
+          </tbody>
+    
+          </table>
+    </section>
+</main>

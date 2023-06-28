@@ -1,0 +1,95 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Employees</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <!-- <li class="breadcrumb-item">Components</li> -->
+          <li class="breadcrumb-item active">Employees</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row  m-2 shadow p-3 mb-5 bg-body rounded pb-5">
+        <form class="row g-3" [formGroup]="formdata" (ngSubmit)="Save(formdata.value)">
+            
+            
+            <div class="col-md-5">
+              <label for="inputPassword4" class="form-label">Name</label>
+              <input type="text" class="form-control" id="inputPassword4" formControlName="name">
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="col-md-2">
+                <label for="inputEmail4" class="form-label">Code</label>
+                <input type="text" class="form-control" id="inputEmail4" formControlName="code">
+              </div>
+
+            <div class="col-md-5">
+                <label for="inputState" class="form-label">Gender</label>
+                <select id="inputState" class="form-select" formControlName="gender">
+                  <option selected>Choose...</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <label for="inputAddress2" class="form-label">Mobile No</label>
+              <input type="text" class="form-control" id="inputAddress2" formControlName="mobileno">
+            </div>
+            <div class="col-md-5">
+              <label for="inputCity" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputCity" formControlName="email">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <label for="inputAddress" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputAddress" formControlName="password">
+              </div>
+            
+            <div class="col-md-6 text-end mt-5">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+      </div>
+
+      <hr>
+
+      <table class="table table-secondary shadow p-3 mb-5 bg-body rounded pb-5">
+        <thead>
+        <tr>
+            <th>Sr.no</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Mobile No</th>
+            <th>Email ID</th>
+            <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let employee of employees, let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ employee.code }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.gender }}</td>
+            <td>{{ employee.mobileno }}</td>
+            <td>{{ employee.email }}</td>
+            <td>
+              <button class="btn btn-outline-primary me-2" (click)="Edit(employee.id)">Edit</button>
+              <button class="btn btn-outline-danger" (click)="Delete(employee.id)">Delete</button>
+            </td>
+        </tr>
+      </tbody>
+
+      </table>
+
+    </section>
+
+  </main><!-- End #main -->

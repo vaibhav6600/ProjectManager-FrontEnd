@@ -1,0 +1,13 @@
+input,select,textarea{
+    box-shadow: 0 0 2px black;
+}
+th{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#Action{
+    width: 160px;
+}
+#Module{
+    width: 145px;
+}

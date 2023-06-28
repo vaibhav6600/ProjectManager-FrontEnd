@@ -1,0 +1,7 @@
+input,select{
+    box-shadow: 0 0 2px black;
+}
+th{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
